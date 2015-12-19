@@ -1,0 +1,18 @@
+# Create the project directory
+mkdir rest_users
+cd rest_users
+
+# Create virtualenv
+virtualenv env
+source env/bin/activate
+
+# Install reqs
+pip install -r requirements.txt
+
+# Sync DB first time
+python manage.py syncdb
+
+# You'll be asked if you want to set up a superuser, type 'yes'
+
+curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/
+curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/1/

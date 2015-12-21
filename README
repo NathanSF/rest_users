@@ -1,6 +1,4 @@
-# Create the project directory
-mkdir rest_users
-cd rest_users
+# https://github.com/NathanSF/rest_users
 
 # Create virtualenv
 virtualenv env
@@ -12,7 +10,29 @@ pip install -r requirements.txt
 # Sync DB first time
 python manage.py syncdb
 
-# You'll be asked if you want to set up a superuser, type 'yes'
+# Start server
+python manage.py runserver
 
+# You'll be asked if you want to set up a superuser, type 'no'
+
+# Create user
+curl -X POST http://127.0.0.1:8000/users/ -d '{"username": "tester1", "first_name":"tester", "last_name":"last", "email": "tester1@tester.com"}' -H "Content-Type: application/json"
+
+# Get users
 curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/
+
+# Get specific user
 curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/1/
+
+# Update user
+curl -X PUT http://127.0.0.1:8000/users/5/ -d '{"username": "tester222", "first_name":"tester", "last_name":"last", "email": "tester1@tester.com"}' -H "Content-Type: application/json"
+
+# Delete user
+curl -X DELETE http://127.0.0.1:8000/users/4/ -H "Content-Type: application/json"
+
+curl -X POST http://127.0.0.1:8000/groups/ -d '{"name": "awesome users"}' -H "Content-Type: application/json"
+
+
+# View unit tests at /rest_users/restapp/tests.py
+# To perform unit tests (make sure virtualenv running)
+python manage.py test

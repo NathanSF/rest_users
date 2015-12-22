@@ -1,5 +1,3 @@
-# https://github.com/NathanSF/rest_users
-
 # Create virtualenv
 virtualenv env
 source env/bin/activate

@@ -25,12 +25,20 @@ curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/
 curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/users/1/
 
 # Update user
-curl -X PUT http://127.0.0.1:8000/users/5/ -d '{"username": "tester222", "first_name":"tester", "last_name":"last", "email": "tester1@tester.com"}' -H "Content-Type: application/json"
+curl -X PUT http://127.0.0.1:8000/users/5/ -d '{"username": "testerupdate", "first_name":"tester", "last_name":"last", "email": "tester1update@tester.com"}' -H "Content-Type: application/json"
 
 # Delete user
 curl -X DELETE http://127.0.0.1:8000/users/4/ -H "Content-Type: application/json"
 
+# Add group
 curl -X POST http://127.0.0.1:8000/groups/ -d '{"name": "awesome users"}' -H "Content-Type: application/json"
+curl -X POST http://127.0.0.1:8000/groups/ -d '{"name": "super users"}' -H "Content-Type: application/json"
+
+# Delete group
+curl -X DELETE http://127.0.0.1:8000/groups/2/ -H "Content-Type: application/json"
+
+# Get groups
+curl -H 'Accept: application/json; indent=4' http://127.0.0.1:8000/groups/
 
 
 # View unit tests at /rest_users/restapp/tests.py
